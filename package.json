@@ -1,0 +1,41 @@
+{
+  "name": "bins-webhook",
+  "homepage": "https://github.com/reelyactive/bins-webhook/",
+  "author": {
+    "name": "reelyActive",
+    "email": "info@reelyactive.com"
+  },
+  "description": "Webhook to forward the identifiers of detected bins.  We believe in an open Internet of Things.",
+  "keywords": [
+    "reelyActive",
+    "webhook",
+    "bins"
+  ],
+  "version": "0.1.0",
+  "engines": {
+    "node": ">=6.0.0"
+  },
+  "main": "./lib/binswebhook.js",
+  "scripts": {
+    "start": "node bin/bins-webhook",
+    "csl": "node bin/bins-webhook-csl"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reelyactive/bins-webhook.git"
+  },
+  "dependencies": {
+    "barnowl": "^1.3.0",
+    "barnowl-csl": "^1.0.0"
+  },
+  "devDependencies": {},
+  "bugs": {
+    "url": "https://github.com/reelyactive/bins-webhook/issues"
+  },
+  "contributors": [
+    {
+      "name": "Jeffrey Dungen"
+    }
+  ],
+  "license": "MIT"
+}

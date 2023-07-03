@@ -1,0 +1,11 @@
+#!/usr/bin/env node
+
+const BinsWebhook = require('../lib/binswebhook.js');
+const BarnowlCsl = require('barnowl-csl');
+
+let options = {};
+try { options = require('../config/options.json') }
+catch(err) {}
+
+let service = new BinsWebhook(options);
+service.addListener(BarnowlCsl, {}, BarnowlCsl.HttpListener, {});

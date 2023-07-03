@@ -1,0 +1,3 @@
+# Include the empty config folder in the repo
+*
+!.gitignore

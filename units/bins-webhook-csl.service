@@ -1,0 +1,12 @@
+[Unit]
+Description=bins-webhook for CSL CS463 reader
+After=network.target
+
+[Service]
+WorkingDirectory=/home/root/reelyActive/bins-webhook
+ExecStart=/usr/local/bin/npm run csl
+Restart=on-failure
+User=reelyactive
+
+[Install]
+WantedBy=multi-user.target

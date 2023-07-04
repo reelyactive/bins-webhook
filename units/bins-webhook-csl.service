@@ -3,7 +3,7 @@ Description=bins-webhook for CSL CS463 reader
 After=network.target
 
 [Service]
-WorkingDirectory=/home/root/reelyActive/bins-webhook/bin
+WorkingDirectory=/home/reelyactive/bins-webhook/bin
 ExecStart=/usr/local/bin/node bins-webhook-csl
 Restart=on-failure
 User=reelyactive

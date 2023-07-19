@@ -7,7 +7,7 @@ let options = {};
 try { options = require('../config/options.json') }
 catch(err) {}
 
-options.csl463SignalAppearance = true;
+options.cs463SignalAppearance = true;
 
 let service = new BinsWebhook(options);
 service.addListener(BarnowlCsl, {}, BarnowlCsl.HttpListener, {});

@@ -29,10 +29,20 @@ Create a file called __options.json__ in the /config folder and include any of t
         "useHttps": false,
         "customHeaders": {},
         "heartbeatMilliseconds": 60000,
-        "numberOfDecodingsThreshold": 5
+        "numberOfDecodingsThreshold": 5,
+        "signalAppearanceMilliseconds": 5000,
+        "csl463SignalAppearance": false
     }
 
 the default values of the properties are shown above.  Each of the start scripts will reference this file, if present.
+
+
+Signal Appearance
+-----------------
+
+The detection (appearance) of a new bin can optionally be signalled on a general-purpose output of the CSL463 reader by setting the `csl463SignalAppearance` option to `true`.
+
+In this case, GPO1 will be closed when a new bin appears and opened after `signalAppearanceMilliseconds`.  If multiple bins appear within the signal window, GPO1 will be opened `signalAppearanceMilliseconds` after the last bin appears within the window.
 
 
 License

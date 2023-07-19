@@ -29,6 +29,7 @@ Create a file called __options.json__ in the /config folder and include any of t
         "useHttps": false,
         "customHeaders": {},
         "heartbeatMilliseconds": 60000,
+        "mixingDelayMilliseconds": 10000,
         "numberOfDecodingsThreshold": 5,
         "signalAppearanceMilliseconds": 5000,
         "csl463SignalAppearance": false

@@ -43,7 +43,7 @@ Bin Identifier Forwarding
 
 __bins-webhook__ will POST an array of bin identifiers to the /bins route of the hostname/port specified in the config/options.json file every heartbeatMilliseconds.  In the default configuration, __bins-webhook__ will POST to [http://localhost:3001/bins](#configuration) every minute (60000ms).
 
-To point the webhook to a different server, update the hostname, port and useHttps values in the options.json file as required.  For example:
+To point the webhook to a different server, update the `hostname`, `port` and `useHttps` values in the options.json file as required.  For example:
 
     {
         "hostname": "192.168.0.123",
@@ -64,6 +64,11 @@ Signal Appearance
 The detection (appearance) of a new bin can optionally be signalled on a general-purpose output of the CS463 reader by setting the `cs463SignalAppearance` option to `true`.
 
 In this case, GPO1 will be closed when a new bin appears and opened after `signalAppearanceMilliseconds`.  If multiple bins appear within the signal window, GPO1 will be opened `signalAppearanceMilliseconds` after the last bin appears within the window.
+
+Note that toggling GPO1 on the CS463 may require additional permissions which can be set with the following commands (on the CS463 itself):
+
+    sudo chmod 755 /opt/inf_out_set
+    sudo chmod 666 /sys/class/gpio/gpio205/value
 
 
 License

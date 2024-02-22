@@ -41,7 +41,7 @@ the default values of the properties are shown above.  Each of the start scripts
 Bin Identifier Forwarding
 -------------------------
 
-__bins-webhook__ will POST an array of bin identifiers to the /bins route of the hostname/port specified in the config/options.json file every heartbeatMilliseconds.  In the default configuration, __bins-webhook__ will POST to [http://localhost:3001/bins](#configuration) every minute (60000ms).
+__bins-webhook__ will POST an array of bin identifiers to the /bins route of the hostname/port specified in the config/options.json file every `heartbeatMilliseconds`.  In the default configuration, __bins-webhook__ will POST to [http://localhost:3001/bins](#configuration) every minute (60000ms).
 
 To point the webhook to a different server, update the `hostname`, `port` and `useHttps` values in the options.json file as required.  For example:
 
@@ -56,6 +56,18 @@ would POST to [https://192.168.0.123:8080/bins](#configuration).
 The target server should accept application/json on the /bins route, and expect, as the body, an array of hexadecimal strings, each representing a bin identifier.  If there are no bins, __bins-webhook__ will POST an empty array.  The following example includes two 96-bit EPC identifiers.
 
     [ "3074257bf7194e4000001a84", "3074257bf7194e4000001a85" ]
+
+
+Bin Decoding
+------------
+
+__bins-webhook__ handles decodings from a [barnowl](https://github.com/reelyactive/barnowl) instance which interprets data from the underlying hardware into [raddec](https://github.com/reelyactive/raddec) objects which contain, among other things, a _transmitterId_ and _numberOfDecodings_ by _receiverId_.
+
+The `mixingDelayMilliseconds` parameter determines for how long the barnowl instance will combine bin decodings into a single raddec to be processed by the __bins-webhook__ logic.
+
+__bins-webhook__ maintains a Map of bins (devices) in memory with the bin identifier (transmitterId) as key and the number of decodings (cumulative over all receivers) as value.  Whenever a bin is decoded, the Map is updated to increment the number of decodings.
+
+Every `heartbeatMilliseconds`, __bins-webhook__ iterates over the Map of bins and forwards those which have a number of decodings greater than or equal to `numberOfDecodingsThreshold`, after which the Map is cleared.
 
 
 Signal Appearance

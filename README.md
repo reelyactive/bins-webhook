@@ -82,6 +82,8 @@ Note that toggling GPO1 on the CS463 may require additional permissions which ca
     sudo chmod 755 /opt/inf_out_set
     sudo chmod 666 /sys/class/gpio/gpio205/value
 
+To ensure these additional permissions apply each time the CS463 reboots, add the two commands above to the end of the /etc/rc.local file.
+
 
 License
 -------
